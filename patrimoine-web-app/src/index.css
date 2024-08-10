@@ -1,0 +1,59 @@
+
+*{
+    scroll-behavior: smooth;
+}
+.card-content-container{
+    width: 1000px;
+    height: 250px;
+    border-radius: 10px;
+    margin: auto;
+    background: #cccccc;
+}
+.main,
+main{
+    width: 100%;
+    
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.possessionIcon{
+    transform: scale(0.9);
+}
+#total{
+    height: 75dvh;
+}
+.form-total{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.total-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.width{
+    width: 600px;
+}
+.total-icon{
+    
+    width: 150px;
+    aspect-ratio: 3/4;
+}
+.total-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.myLinks{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+}

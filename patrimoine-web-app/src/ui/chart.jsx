@@ -13,9 +13,12 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
+
 import "./PatrimoineChart.css"; // Custom CSS file
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./dumb-components/Sidebar";
+// import { Sidebar, Navbar } from "./dashboard";
+// import { loadPossessions } from "./smart-components/LoadPossessions";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,13 +28,13 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-import { Sidebar, Navbar } from "./dashboard";
 const PatrimoineChart1 = () => {
   const nav = useNavigate();
   const [dateDebut, setDateDebut] = useState(null);
   const [dateFin, setDateFin] = useState(null);
   const [data, setData] = useState(null);
   const [possessions, setPossessions] = useState([]);
+  //--------------------------------------GET VALUES WHEN POSSESSION -> possession and date = a date------------------------------------//
 
   function getValueAtThisMoment(possession, date) {
     const possessionOwningDate = new Date(possession.owningdate);
@@ -54,18 +57,19 @@ const PatrimoineChart1 = () => {
       possession.value * ((raison * possession.decreasingrate) / 100);
     return result;
   }
-
-  useEffect(() => {
-    async function Load() {
-      try {
-        const res = await axios.get("http://localhost:3000/" + "possession");
-        setPossessions([...res.data]);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    Load();
-  }, []);
+// --------------------------------------LOAD POSSESSIONS LIST--------------------------------------------------------//
+  // useEffect(() => {
+  //   async function Load() {
+  //     try {
+  //       const res = await axios.get("http://localhost:3000/" + "possession");
+  //       setPossessions([...res.data]);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   Load();
+  // }, []);
+ // loadPossessions()
 
   const handleValidate = () => {
     const fetchData = async () => {
@@ -74,6 +78,7 @@ const PatrimoineChart1 = () => {
     };
     fetchData();
   };
+  //----------------------------fetch value and data for th chart -------------------------------------------------------//
 
   const fetchValeurPatrimoine = async (dateDebut, dateFin) => {
     const labels = [];
